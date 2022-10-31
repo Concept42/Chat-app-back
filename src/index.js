@@ -14,6 +14,10 @@ app.use(bodyParser.json())
 
 app.use('/api/auth', userRoutes)
 app.use('/api/messages', messageRoute)
+app.get('/', (req, res) => {
+  res.sendFile('index.html', { root: path.join(__dirname, 'public') })
+})
+app.use(express.static('public'))
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
   console.log('connected to the db'),
@@ -43,4 +47,5 @@ io.on('connection', (socket) => {
     }
   })
 })
+
 module.exports = app
