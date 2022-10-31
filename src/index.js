@@ -27,7 +27,7 @@ const server = app.listen(process.env.PORT, () => console.log(`Server started on
 
 const io = socket(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'https://chat-app-front-swart.vercel.app',
     credentials: true,
   },
 })
