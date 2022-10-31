@@ -19,11 +19,13 @@ app.get('/', (req, res) => {
 })
 app.use(express.static('public'))
 
+const port = process.env.PORT || 3500
+
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
   console.log('connected to the db'),
 )
 
-const server = app.listen(process.env.PORT, () => console.log(`Server started on Port ${process.env.PORT}`))
+const server = app.listen(port, () => console.log(`Server started on Port ${process.env.PORT}`))
 
 const io = socket(server, {
   cors: {
