@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const userRoutes = require("./routes/userRoutes");
 const messageRoute = require("./routes/messagesRoute");
 const { Server } = require("socket.io");
+
 const io = new Server(server, {
   cors: {
     origin: "https://chat-app-front-swart.vercel.app",
@@ -58,4 +59,4 @@ io.on("connection", (socket) => {
   });
 });
 
-module.exports = app;
+(module.exports = app), server;
